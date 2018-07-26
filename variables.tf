@@ -1,19 +1,12 @@
-variable "fqdns_count" {
-  type = "string"
-}
+variable "service_apps_count" {}
 
-variable "webapp_kv_names_fqdns" {
+variable "service_apps_and_fqdns" {
   type = "map"
 
   description = <<eof
-    "webapp01" = "webapp01.example.com"
-    "webapp02" = "webapp02.example.com"
+    "webapp01" = ["webapp01.example.com","spacialName.example.com"]
+    "webapp02" = ["webapp02.example.com"]
   eof
-}
-
-variable "resource_group_name" {
-  description = "Azure Group Name"
-  type        = "string"
 }
 
 variable "certificate_thumbprint" {
@@ -21,6 +14,11 @@ variable "certificate_thumbprint" {
   type        = "string"
 }
 
+variable "resource_group_name" {
+  description = "Azure Group Name"
+  type        = "string"
+}
+
 locals {
-  names = "${keys(var.webapp_kv_names_fqdns)}"
+  mapped_names = "${keys(var.service_apps_and_fqdns)}"
 }
