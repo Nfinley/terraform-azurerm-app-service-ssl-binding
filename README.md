@@ -1,4 +1,4 @@
-# tf-module-azure-arm-service-app-ssl-binding
+# tf-module-azurerm-app-service-ssl-binding
 
 Terraform module designed to binds an existing certificate to an existing Azure PaaS Service Plan from the associated it assocuated Service Plan.
 
