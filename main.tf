@@ -1,5 +1,5 @@
 resource "azurerm_template_deployment" "service_app_ssl_binding_main" {
-  count               = "${var.service_app_count}"
+  count               = "${var.service_apps_count}"
   name                = "${format("%s-arm-ssl_binding", element(local.names, count.index))}"
   resource_group_name = "${var.resource_group_name}"
   deployment_mode     = "Incremental"
