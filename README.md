@@ -22,11 +22,11 @@ data "azurerm_app_service" "test02" {
 module "eg_bind_certificate_to_services_apps" {
   source     = "git::https://github.com/transactiveltd/terraform-azurerm-app-service-ssl-binding.git?ref=v0.1.0"
 
-  service_apps_and_fqdns = {
-      "${data.azurermazurerm_app_service.test01.name}" = ["webapp01.example.com","spacialName01.example.com"]
-      "${data.azurermazurerm_app_service.test02.name}" = ["webapp02.example.com","spacialName02.example.com"]
+  app_services_and_fqdns = {
+      "${data.azurermazurerm_app_service.test01.name}" = "webapp01.example.com,spacialName01.example.com"
+      "${data.azurermazurerm_app_service.test02.name}" = "webapp02.example.com"
   }
-  service_app_count      = 2
+  count_of_app_services      = 2
   certificate_thumbprint = "a909502dd82ae41433e6f83886b00d4277a32a7b"
   resource_group_name    = "testing-service-rg"
 }
@@ -37,9 +37,9 @@ This will run an arm template deployment on the given resource group, add bind t
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| service_apps_and_fqdns | Azure Resouce Id path | map | - | yes |
-| service_app_count | Must match the number keys (Service Apps) in the `service_apps_and_fqdns` map above | number | - | yes |
-| certificate_thumbprint | Certifcate thumbprint eg: `a909502dd82ae41433e6f83886b00d4277a32a7b`  | string | - | yes |
+| app_services_and_fqdns | key/value pair app_service = fqdn | map | - | yes |
+| count_of_app_services | Must match the number keys (App Services) in the `app_services_and_fqdns` map above | number | - | yes |
+| certificate_thumbprint | Certifcate thumbprint eg: `a909502dd82ae41433e6f83886b00d4277a32a7b` | string | - | yes |
 | resource_group_name | Resource Group name, e.g. `testing-service-rg` | string | - | yes |
 
 

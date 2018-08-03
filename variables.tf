@@ -1,11 +1,11 @@
-variable "service_apps_count" {}
+variable "count_of_app_services" {}
 
-variable "service_apps_and_fqdns" {
+variable "app_services_and_fqdns" {
   type = "map"
 
   description = <<eof
-    "webapp01" = ["webapp01.example.com","spacialName.example.com"]
-    "webapp02" = ["webapp02.example.com"]
+    "webapp01" = "webapp01.example.com,spacialName.example.com"]
+    "webapp02" = "webapp02.example.com"
   eof
 }
 
@@ -20,5 +20,5 @@ variable "resource_group_name" {
 }
 
 locals {
-  mapped_names = "${keys(var.service_apps_and_fqdns)}"
+  app_service_names = "${keys(var.app_services_and_fqdns)}"
 }
