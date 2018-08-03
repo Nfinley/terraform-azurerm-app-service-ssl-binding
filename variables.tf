@@ -22,3 +22,5 @@ variable "resource_group_name" {
 locals {
   mapped_names = "${keys(var.service_apps_and_fqdns)}"
 }
+
+variable depends_on { default = [], type = "list"}
