@@ -49,5 +49,5 @@ DEPLOY
     "certificateThumbprint" = "${var.certificate_thumbprint}"
   }
 
-  depends_on = "${var.depends_on}"
+  depends_on = []
 }

@@ -20,7 +20,7 @@ data "azurerm_app_service" "test02" {
 }
 
 module "eg_bind_certificate_to_services_apps" {
-  source     = "git::https://github.com/transactiveltd/terraform-azurerm-app-service-ssl-binding.git?ref=v0.1.0"
+  source     = "git::https://github.com/transactiveltd/tf-module-azure-arm-service-app-ssl-binding.git?ref=v0.1.0"
 
   service_apps_and_fqdns = {
       "${data.azurermazurerm_app_service.test01.name}" = ["webapp01.example.com","spacialName01.example.com"]
