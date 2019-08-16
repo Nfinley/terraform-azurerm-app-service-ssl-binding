@@ -43,7 +43,7 @@ resource "azurerm_template_deployment" "service_app_ssl_binding_main" {
 }
 DEPLOY
 
-  parameters {
+  parameters = {
     "appServicesName"       = "${element(local.app_service_names, count.index)}"
     "FQDNs"                 = "${lookup(var.app_services_and_fqdns ,element(local.app_service_names, count.index))}"
     "certificateThumbprint" = "${var.certificate_thumbprint}"
